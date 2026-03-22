@@ -396,7 +396,7 @@
 <body>
 
 <header>
-  <div class="logo">Sleep<span>Scout</span> <span class="badge">BETA</span></div>
+  <div class="logo" id="logoBtn" style="cursor:pointer;user-select:none;" title="Zurücksetzen">Sleep<span>Scout</span> <span class="badge">BETA</span></div>
   <div class="radius-control">
     <label>Radius</label>
     <input type="range" id="radiusSlider" min="1" max="50" value="5" step="1"/>
@@ -429,8 +429,8 @@
 
     <div class="filter-chips">
       <div class="chip active" data-type="parking"><span class="chip-dot"></span>Parkplätze</div>
-      <div class="chip active" data-type="gravel"><span class="chip-dot"></span>Kiesplätze</div>
-      <div class="chip active" data-type="forest"><span class="chip-dot"></span>Waldplätze</div>
+      <div class="chip" data-type="gravel"><span class="chip-dot"></span>Kiesplätze</div>
+      <div class="chip" data-type="forest"><span class="chip-dot"></span>Waldplätze</div>
     </div>
   </div>
 
@@ -545,7 +545,7 @@ window.addEventListener('load', function(){
   // ── STATE ────────────────────────────────────────────────────────────────────
   var centerMarker=null, radiusCircle=null, pulseCircle=null;
   var markers=[], tooltipLayers=[], allResults=[];
-  var activeFilters=new Set(['parking','gravel','forest']);
+  var activeFilters=new Set(['parking']);
 
   // ── CIRCLE ───────────────────────────────────────────────────────────────────
   function updateCircleStyle(){
@@ -689,7 +689,7 @@ window.addEventListener('load', function(){
 node["amenity"="parking"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
 way["amenity"="parking"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
 way["parking"="surface"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
-way["highway"="track"]["access"!="private"]["access"!="no"]["motor_vehicle"!="no"]["motor_vehicle"!="private"](around:'+r+','+lat+','+lng+');\
+way["highway"="track"]["tracktype"~"grade1|grade2"]["access"!="private"]["access"!="no"]["motor_vehicle"!="no"](around:'+r+','+lat+','+lng+');\
 way["highway"="unclassified"]["surface"~"gravel|dirt|unpaved|compacted"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
 way["highway"="service"]["surface"~"gravel|dirt|unpaved"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
 way["landuse"="quarry"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
@@ -698,7 +698,7 @@ way["landuse"="forest"]["motor_vehicle"="yes"](around:'+r+','+lat+','+lng+');\
 way["natural"="wood"]["access"="yes"](around:'+r+','+lat+','+lng+');\
 node["natural"="clearing"](around:'+r+','+lat+','+lng+');\
 way["natural"="clearing"](around:'+r+','+lat+','+lng+');\
-);out center tags 300;';
+);out center tags 150;';
 
     try{
       var data=await overpassQuery(q);
@@ -939,6 +939,45 @@ way["natural"="clearing"](around:'+r+','+lat+','+lng+');\
       }
     });
   }
+
+  // ── LOGO RESET ────────────────────────────────────────────────────────────
+  document.getElementById('logoBtn').addEventListener('click', function(){
+    // clear map
+    clearMarkers();
+    if(centerMarker){map.removeLayer(centerMarker); centerMarker=null;}
+    if(radiusCircle){map.removeLayer(radiusCircle); radiusCircle=null;}
+    if(pulseCircle){map.removeLayer(pulseCircle); pulseCircle=null;}
+    allResults=[];
+
+    // reset input
+    document.getElementById('searchInput').value='';
+
+    // reset radius to 5km
+    radiusKm=5;
+    slider.value=5;
+    radiusValEl.textContent='5 km';
+    updateSliderTrack();
+
+    // reset chips: only parking active
+    activeFilters=new Set(['parking']);
+    document.querySelectorAll('.chip').forEach(function(chip){
+      chip.classList.toggle('active', chip.dataset.type==='parking');
+    });
+
+    // reset results list
+    document.getElementById('resultsList').innerHTML=
+      '<div class="empty-state"><div class="empty-icon">🌙</div>'+
+      '<div>Klicke auf die Karte oder gib<br>einen Ort in die Suche ein.</div></div>';
+    document.getElementById('countBadge').textContent='0';
+    setStatus('ok','Zurückgesetzt.');
+
+    // close sheet if open
+    closeSheet();
+
+    // fly back to default view
+    map.flyTo([46.95,7.45],12,{duration:1.0});
+  });
+
   // ── BOTTOM SHEET ──────────────────────────────────────────────────────────
   var sheet = document.getElementById('bottomSheet');
   var backdrop = document.getElementById('sheetBackdrop');
