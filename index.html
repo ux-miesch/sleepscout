@@ -669,6 +669,7 @@ window.addEventListener('load', function(){
     });
   }
   function drawRadius(lat,lng){
+    if(previewCircle){map.removeLayer(previewCircle);previewCircle=null;}
     if(radiusCircle)map.removeLayer(radiusCircle);
     if(pulseCircle)map.removeLayer(pulseCircle);
     radiusCircle=L.circle([lat,lng],{radius:radiusKm*1000,weight:3,opacity:1,fillOpacity:0.06,dashArray:'12 8'}).addTo(map);
@@ -1133,6 +1134,7 @@ node["tourism"="wilderness_hut"](around:'+r+','+lat+','+lng+');\
     // clear map
     clearMarkers();
     if(centerMarker){map.removeLayer(centerMarker); centerMarker=null;}
+    if(previewCircle){map.removeLayer(previewCircle);previewCircle=null;}
     if(radiusCircle){map.removeLayer(radiusCircle); radiusCircle=null;}
     if(pulseCircle){map.removeLayer(pulseCircle); pulseCircle=null;}
     allResults=[];
