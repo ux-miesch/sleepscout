@@ -47,7 +47,6 @@
   .radius-control{display:flex;align-items:center;gap:10px;font-size:0.72rem;color:var(--muted);}
   .radius-control label{font-weight:500;color:var(--text2);white-space:nowrap;}
   .radius-val{font-weight:700;color:var(--accent);min-width:44px;text-align:right;font-size:0.8rem;}
-  /* Radius slider */
   input[type="range"]{
     -webkit-appearance:none;appearance:none;
     width:130px;height:7px;border-radius:4px;outline:none;cursor:pointer;
@@ -102,7 +101,6 @@
   .btn-secondary{background:var(--surface);border-color:var(--border2);color:var(--text2);}
   .btn-secondary:hover{background:var(--surface2);border-color:var(--border2);box-shadow:var(--shadow);}
 
-  /* map style pills */
   .map-style-group{display:flex;align-items:center;gap:2px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius);padding:3px;}
   .style-btn{padding:4px 10px;border-radius:7px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:500;color:var(--muted);background:transparent;transition:all 0.15s;white-space:nowrap;}
   .style-btn.active{background:var(--surface);color:var(--text);box-shadow:var(--shadow);font-weight:600;}
@@ -110,7 +108,6 @@
 
   .divider{width:1px;height:22px;background:var(--border);flex-shrink:0;}
 
-  /* filter chips */
   .filter-chips{display:flex;gap:5px;flex-wrap:wrap;align-items:center;}
   .chip{
     display:flex;align-items:center;gap:4px;padding:4px 11px;
@@ -125,11 +122,9 @@
 
   /* ── CONTENT ── */
   .content{display:grid;grid-template-rows:1fr auto;overflow:hidden;}
-  /* Always show crosshair – pin is always active */
   #map{width:100%;height:100%;min-height:260px;cursor:crosshair!important;}
   #map .leaflet-interactive{cursor:crosshair!important;}
 
-  /* pin hint overlay on map */
   .pin-hint{
     position:absolute;top:12px;left:50%;transform:translateX(-50%);
     background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);
@@ -151,8 +146,6 @@
   .status-dot.err{background:var(--red);}
   @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
 
-  /* ── RESULTS PANEL ── */
-  /* results panel is now hidden by default */
   .results-panel{display:none;}
 
   /* ── BOTTOM SHEET ── */
@@ -174,7 +167,6 @@
   }
   body.is-fullscreen .sheet-trigger{bottom:20px;}
 
-  /* the sheet itself */
   .bottom-sheet{
     position:fixed;bottom:0;left:0;right:0;
     z-index:2000;
@@ -193,14 +185,6 @@
     opacity:0;transition:opacity 0.3s;pointer-events:none;
   }
   .sheet-backdrop.open{opacity:1;pointer-events:all;}
-  .sheet-handle-row{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:12px 16px 0;flex-shrink:0;
-  }
-  .sheet-handle{
-    width:36px;height:4px;border-radius:2px;
-    background:var(--border2);margin:0 auto;
-  }
   .sheet-close{
     position:absolute;right:14px;top:10px;
     width:28px;height:28px;border-radius:50%;
@@ -210,23 +194,8 @@
     transition:all 0.15s;
   }
   .sheet-close:hover{background:var(--border);color:var(--text);}
-  .sheet-header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:8px 16px 8px;border-bottom:1px solid var(--border);flex-shrink:0;gap:10px;
-  }
-  .sheet-title{font-weight:700;font-size:0.85rem;display:flex;align-items:center;gap:8px;color:var(--text);}
-  .sheet-legend{display:flex;align-items:center;gap:10px;flex:1;justify-content:center;}
-  .results-header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:7px 16px;border-bottom:1px solid var(--border);flex-shrink:0;gap:10px;
-  }
-  .results-title{font-weight:700;font-size:0.82rem;display:flex;align-items:center;gap:8px;color:var(--text);}
-  .count-badge{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:1px 8px;font-size:0.64rem;color:var(--muted);font-weight:500;}
 
-  /* legend inline */
-  .legend-inline{display:flex;align-items:center;gap:10px;flex:1;justify-content:center;}
-  .legend-item{display:flex;align-items:center;gap:4px;font-size:0.62rem;color:var(--muted);font-weight:500;}
-  .leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .count-badge{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:1px 8px;font-size:0.64rem;color:var(--muted);font-weight:500;}
 
   .sort-select{
     background:var(--surface2);border:1.5px solid var(--border);
@@ -240,10 +209,11 @@
 
   /* ── RESULT CARDS ── */
   .result-card{
-    display:flex;align-items:center;gap:10px;padding:7px 10px;
+    display:flex;align-items:center;gap:10px;padding:8px 10px;
     background:var(--surface);border:1.5px solid var(--border);
     border-radius:9px;cursor:pointer;transition:all 0.15s;
     animation:slideIn 0.22s ease forwards;opacity:0;
+    min-height:54px;
   }
   @keyframes slideIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
   .result-card:hover{border-color:var(--border2);background:var(--surface2);box-shadow:var(--shadow);}
@@ -252,14 +222,13 @@
   .result-card.access-orange{border-left:3px solid var(--orange);}
 
   .result-emoji{font-size:1rem;flex-shrink:0;width:22px;text-align:center;}
-  .result-info{flex:1;min-width:0;}
-  .result-name{font-weight:600;font-size:0.76rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px;color:var(--text);}
-  .result-meta{display:flex;align-items:center;gap:5px;flex-wrap:nowrap;}
-  .result-sub{font-size:0.61rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;}
+  .result-info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:2px;}
+  .result-name{font-weight:600;font-size:0.76rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
+  .result-sub{font-size:0.61rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .access-tag{font-size:0.59rem;padding:1px 6px;border-radius:20px;white-space:nowrap;flex-shrink:0;font-weight:600;}
   .access-tag.green{background:#dcfce7;color:var(--accent);}
   .access-tag.orange{background:#ffedd5;color:#c2410c;}
-  .result-dist{font-size:0.68rem;font-weight:600;padding:2px 8px;border-radius:20px;flex-shrink:0;}
+  .result-dist{font-size:0.68rem;font-weight:600;padding:2px 8px;border-radius:20px;flex-shrink:0;align-self:center;}
   .tag-parking{background:#f0fdf4;color:var(--accent);}
   .tag-gravel{background:#f0fdf4;color:var(--accent);}
   .tag-forest{background:#f0fdf4;color:var(--accent);}
@@ -333,7 +302,6 @@
   .leaflet-control-layers{display:none;}
   .leaflet-tooltip{background:none!important;border:none!important;box-shadow:none!important;padding:0!important;}
   .leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{display:none!important;}
-  /* map chip labels */
   .map-chip{
     padding:2px 8px;border-radius:20px;
     font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
@@ -343,7 +311,6 @@
   }
   .map-chip-green{background:rgba(240,253,244,0.95);color:var(--accent);border-color:rgba(22,163,74,0.3);}
   .map-chip-orange{background:rgba(255,237,213,0.95);color:#c2410c;border-color:rgba(234,88,12,0.3);}
-
 
   /* ── DISCLAIMER MODAL ── */
   .modal-backdrop{
@@ -465,20 +432,17 @@
 
     <div class="filter-chips">
       <div class="chip active" data-type="parking"><span class="chip-dot"></span>Parkplätze</div>
-      <div class="chip" data-type="wild"><span class="chip-dot"></span>Natur & Kies</div>
       <div class="chip" data-type="camping"><span class="chip-dot"></span>Camping & Picknick</div>
+      <div class="chip" data-type="wild"><span class="chip-dot"></span>Natur & Kies</div>
     </div>
   </div>
 
   <div class="content" style="position:relative;">
     <div id="map"></div>
-    <!-- always-visible pin hint -->
     <div class="pin-hint">📌 Klick / Touch auf Karte = Suche starten</div>
-    <!-- fullscreen toggle -->
     <button class="btn-fullscreen" id="fullscreenBtn" title="Vollbild">
       <svg id="fsIcon" viewBox="0 0 24 24"><path id="fsExpand" d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
     </button>
-    <!-- loading overlay on map -->
     <div id="mapOverlay" class="map-overlay" style="display:none;">
       <div class="map-overlay-card">
         <div class="map-overlay-spinner"></div>
@@ -486,13 +450,12 @@
         <div class="map-overlay-sub" id="overlaySub">Overpass-API wird abgefragt</div>
         <div class="map-overlay-steps">
           <div class="map-step" id="step1"><div class="step-dot pending"></div><span>Parkplätze</span></div>
-          <div class="map-step" id="step2"><div class="step-dot pending"></div><span>Natur &amp; Kies</span></div>
-          <div class="map-step" id="step3"><div class="step-dot pending"></div><span>Camping &amp; Picknick</span></div>
+          <div class="map-step" id="step2"><div class="step-dot pending"></div><span>Camping &amp; Picknick</span></div>
+          <div class="map-step" id="step3"><div class="step-dot pending"></div><span>Natur &amp; Kies</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Details trigger button -->
     <button class="sheet-trigger" id="sheetTriggerBtn">
       Details
       <span class="sheet-count" id="countBadge">0</span>
@@ -500,29 +463,22 @@
   </div>
 </div>
 
-<!-- Status bar (outside map, compact) -->
 <div class="status-bar-outer"><div class="status-bar" style="padding:4px 16px;font-size:0.64rem;color:var(--muted);background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;gap:7px;">
   <span class="status-dot" id="statusDot"></span>
   <span id="statusMsg">Bereit – Klicke auf die Karte oder gib einen Ort ein.</span>
 </div></div>
 
-<!-- Sheet backdrop -->
 <div class="sheet-backdrop" id="sheetBackdrop"></div>
 
-<!-- Bottom sheet -->
 <div class="bottom-sheet" id="bottomSheet">
-  <!-- single combined header row: handle + title + sort + close -->
-  <div style="display:flex;align-items:center;padding:10px 14px 8px;border-bottom:1px solid var(--border);flex-shrink:0;gap:8px;">
-    <!-- drag handle left -->
-    <div style="width:36px;height:4px;border-radius:2px;background:var(--border2);flex-shrink:0;margin-right:4px;cursor:grab;" id="sheetHandleBar"></div>
-    <!-- title -->
+  <div style="padding:10px 14px 8px;border-bottom:1px solid var(--border);flex-shrink:0;">
+    <div style="width:36px;height:4px;border-radius:2px;background:var(--border2);margin:0 auto 8px;cursor:grab;" id="sheetHandleBar"></div>
+  <div style="display:flex;align-items:center;gap:8px;">
     <div style="font-weight:700;font-size:0.82rem;color:var(--text);flex-shrink:0;">Ergebnisse</div>
-    <!-- legend -->
     <div style="display:flex;align-items:center;gap:8px;flex:1;padding:0 4px;">
       <div style="display:flex;align-items:center;gap:3px;font-size:0.6rem;color:var(--muted);"><div style="width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>Erreichbar</div>
       <div style="display:flex;align-items:center;gap:3px;font-size:0.6rem;color:var(--muted);"><div style="width:7px;height:7px;border-radius:50%;background:#ea580c;flex-shrink:0;"></div>Unsicher</div>
     </div>
-    <!-- sort -->
     <div style="display:flex;align-items:center;gap:4px;flex-shrink:0;">
       <span style="font-size:0.62rem;color:var(--muted);white-space:nowrap;">Sortieren</span>
       <select class="sort-select" id="sortSelect">
@@ -531,8 +487,8 @@
         <option value="name">Name</option>
       </select>
     </div>
-    <!-- close -->
     <button class="sheet-close" id="sheetCloseBtn" style="position:static;flex-shrink:0;width:26px;height:26px;font-size:0.85rem;">✕</button>
+  </div>
   </div>
   <div class="results-list" id="resultsList" style="padding:8px 14px;overflow-y:auto;flex:1;">
     <div class="empty-state">
@@ -550,15 +506,15 @@
 
     <div class="modal-section">
       <h3>Wofür ist diese App?</h3>
-      <p>SleepScout hilft dir, geeignete Standorte für eine Nacht im Freien zu finden – Parkplätze, Forststrassen, Waldplätze und Camping- &amp; Picknickplätze in deiner Nähe, basierend auf öffentlichen OSM-Daten.</p>
+      <p>SleepScout hilft dir, geeignete Standorte für eine Nacht im Freien zu finden.</p>
     </div>
 
     <div class="modal-section">
       <h3>Kategorien &amp; Datenquellen (OSM)</h3>
       <ul>
-        <li><strong>🅿️ Parkplätze</strong> – <code>amenity=parking</code>, <code>parking=surface/yes/street_side</code>, Parkhäuser &amp; Tiefgaragen mit öffentlichem Zugang</li>
-        <li><strong>🌳 Natur &amp; Kies</strong> – Forststrassen Güte 1–2 (<code>highway=track</code>), Rastplätze (<code>highway=rest_area</code>), Kiesuntergrund-Parkplätze, Wald &amp; Naturholz mit erlaubtem Fahrzeugzugang</li>
-        <li><strong>⛺ Camping &amp; Picknick</strong> – <code>tourism=camp_site</code>, Picknickplätze, Feuerstellen, Waldhütten</li>
+        <li><strong>🅿️ Parkplätze &amp; Parkhäuser</strong> – Parkplätze, Häuser und Tiefgaragen</li>
+        <li><strong>⛺ Camping &amp; Picknickplätze</strong> – Feuerstellen und Waldhütten</li>
+        <li><strong>🌳 Natur &amp; Kies</strong> – Wald-, Wiesen- und Naturstrassen</li>
       </ul>
     </div>
 
@@ -582,11 +538,8 @@
 <script>
 window.addEventListener('load', function(){
 
-
-  // ── DISCLAIMER ───────────────────────────────────────────────────────────
   var disclaimerModal=document.getElementById('disclaimerModal');
   var disclaimerOkBtn=document.getElementById('disclaimerOkBtn');
-  // Check if already seen this session
   if(sessionStorage.getItem('sleepscout_ok')){
     disclaimerModal.style.display='none';
   }
@@ -595,7 +548,6 @@ window.addEventListener('load', function(){
     sessionStorage.setItem('sleepscout_ok','1');
   });
 
-  // ── TILES – satellite default ────────────────────────────────────────────────
   var tileLayers={
     dark:      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OSM &copy; CARTO',subdomains:'abcd',maxZoom:19}),
     osm:       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:19}),
@@ -616,7 +568,6 @@ window.addEventListener('load', function(){
     });
   });
 
-  // ── RADIUS ───────────────────────────────────────────────────────────────────
   var radiusKm=2;
   var slider=document.getElementById('radiusSlider');
   var radiusValEl=document.getElementById('radiusVal');
@@ -630,13 +581,10 @@ window.addEventListener('load', function(){
     radiusValEl.textContent=radiusKm+' km';
     updateSliderTrack();
     if(radiusCircle){
-      // Move existing circle to map centre and resize
       var ctr=map.getCenter();
       radiusCircle.setLatLng(ctr).setRadius(radiusKm*1000);
-      // Update search field so next search uses new position
       document.getElementById('searchInput').value=ctr.lat.toFixed(5)+', '+ctr.lng.toFixed(5);
     } else {
-      // No circle yet – create one at map centre
       radiusCircle=L.circle(map.getCenter(),{
         radius:radiusKm*1000,weight:3,opacity:1,
         fillOpacity:0.06,dashArray:'12 8'
@@ -646,12 +594,10 @@ window.addEventListener('load', function(){
   });
   updateSliderTrack();
 
-  // ── STATE ────────────────────────────────────────────────────────────────────
   var centerMarker=null, radiusCircle=null;
   var markers=[], tooltipLayers=[], allResults=[];
   var activeFilters=new Set(['parking']);
 
-  // ── CIRCLE ───────────────────────────────────────────────────────────────────
   function updateCircleStyle(){
     var col=currentStyle==='satellite'?'#ffffff':'#111827';
     if(radiusCircle) radiusCircle.setStyle({
@@ -666,7 +612,6 @@ window.addEventListener('load', function(){
     updateCircleStyle();
   }
 
-  // ── CENTER MARKER ────────────────────────────────────────────────────────────
   function makeCenterIcon(){
     return L.divIcon({
       className:'',
@@ -678,7 +623,6 @@ window.addEventListener('load', function(){
     });
   }
 
-  // ── COLOUR-CODED PINS ────────────────────────────────────────────────────────
   function makeColorIcon(emoji, hexColor){
     return L.divIcon({
       className:'',
@@ -696,16 +640,14 @@ window.addEventListener('load', function(){
     });
   }
 
-  // ── PIN MODE – always on (blocked during loading) ──────────────────────────
   var isSearching=false;
   map.on('click',function(e){
-    if(isSearching)return; // block clicks during active search
+    if(isSearching)return;
     var lat=e.latlng.lat, lng=e.latlng.lng;
     document.getElementById('searchInput').value=lat.toFixed(5)+', '+lng.toFixed(5);
     searchFromCoords(lat,lng);
   });
 
-  // ── CONTROLS ─────────────────────────────────────────────────────────────────
   document.getElementById('locBtn').onclick=function(){
     if(!navigator.geolocation){alert('Geolocation nicht unterstützt.');return;}
     navigator.geolocation.getCurrentPosition(
@@ -723,7 +665,6 @@ window.addEventListener('load', function(){
   document.querySelectorAll('.chip').forEach(function(chip){
     chip.onclick=function(){
       var t=this.dataset.type;
-      // Derive from Set – never let visual and data get out of sync
       if(activeFilters.has(t)){
         activeFilters.delete(t);
         this.classList.remove('active');
@@ -735,7 +676,6 @@ window.addEventListener('load', function(){
     };
   });
 
-  // ── GEOCODE ──────────────────────────────────────────────────────────────────
   async function runSearch(){
     var query=document.getElementById('searchInput').value.trim();
     if(!query)return;
@@ -750,7 +690,6 @@ window.addEventListener('load', function(){
     }catch(e){setLoadingBtn(false);setStatus('err','Geocodierung fehlgeschlagen – Koordinaten direkt eingeben.');}
   }
 
-  // ── OVERPASS ─────────────────────────────────────────────────────────────────
   async function overpassQuery(body,attempt){
     attempt=attempt||1;
     try{
@@ -775,34 +714,37 @@ window.addEventListener('load', function(){
     document.getElementById('resultsList').innerHTML='<div class="empty-state"><div class="empty-icon">⏳</div><div>Daten werden geladen…</div></div>';
     document.getElementById('countBadge').textContent='…';
 
-    // Animate steps while query runs
     setStep(1);
     document.getElementById('overlayTitle').textContent='Suche läuft…';
     document.getElementById('overlaySub').textContent='Parkplätze';
     var stepTimer=setTimeout(function(){
       setStep(2);
-      document.getElementById('overlaySub').textContent='Natur & Kies';
+      document.getElementById('overlaySub').textContent='Camping & Picknick';
     },2000);
     var stepTimer2=setTimeout(function(){
       setStep(3);
-      document.getElementById('overlaySub').textContent='Camping & Picknick';
+      document.getElementById('overlaySub').textContent='Natur & Kies';
     },4500);
 
     var r=radiusKm*1000;
     var q='[out:json][timeout:40];(\
 node["amenity"="parking"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
 way["amenity"="parking"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
+node["amenity"="parking"]["access"="yes"](around:'+r+','+lat+','+lng+');\
+way["amenity"="parking"]["access"="yes"](around:'+r+','+lat+','+lng+');\
 node["parking"~"lane|multi-storey|carport|rooftop|street_side|on_kerb|half_on_kerb|shoulder|surface|yes"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
 way["parking"~"lane|multi-storey|carport|rooftop|street_side|on_kerb|half_on_kerb|shoulder|surface|yes"]["access"!="private"]["access"!="no"](around:'+r+','+lat+','+lng+');\
-node["amenity"="parking_entrance"]["access"!="private"](around:'+r+','+lat+','+lng+');\
-way["highway"="track"]["tracktype"~"grade1|grade2"]["access"!="private"]["access"!="no"]["motor_vehicle"!="no"](around:'+r+','+lat+','+lng+');\
 node["highway"="rest_area"](around:'+r+','+lat+','+lng+');\
 way["highway"="rest_area"](around:'+r+','+lat+','+lng+');\
+way["highway"="track"]["tracktype"~"grade1|grade2"]["access"!="private"]["access"!="no"]["motor_vehicle"!="no"](around:'+r+','+lat+','+lng+');\
+way["highway"="track"]["tracktype"~"grade1|grade2"]["access"="yes"](around:'+r+','+lat+','+lng+');\
 way["landuse"="forest"]["access"="yes"](around:'+r+','+lat+','+lng+');\
 way["landuse"="forest"]["motor_vehicle"="yes"](around:'+r+','+lat+','+lng+');\
 way["natural"="wood"]["access"="yes"](around:'+r+','+lat+','+lng+');\
-node["tourism"="camp_site"]["access"!="private"](around:'+r+','+lat+','+lng+');\
-way["tourism"="camp_site"]["access"!="private"](around:'+r+','+lat+','+lng+');\
+node["tourism"="camp_site"]["access"="yes"](around:'+r+','+lat+','+lng+');\
+way["tourism"="camp_site"]["access"="yes"](around:'+r+','+lat+','+lng+');\
+node["tourism"="camp_site"]["access"="destination"](around:'+r+','+lat+','+lng+');\
+way["tourism"="camp_site"]["access"="destination"](around:'+r+','+lat+','+lng+');\
 node["amenity"="shelter"](around:'+r+','+lat+','+lng+');\
 way["amenity"="shelter"](around:'+r+','+lat+','+lng+');\
 node["tourism"="picnic_site"](around:'+r+','+lat+','+lng+');\
@@ -810,6 +752,7 @@ way["tourism"="picnic_site"](around:'+r+','+lat+','+lng+');\
 node["leisure"="picnic_table"](around:'+r+','+lat+','+lng+');\
 node["amenity"="bbq"](around:'+r+','+lat+','+lng+');\
 node["tourism"="wilderness_hut"](around:'+r+','+lat+','+lng+');\
+way["tourism"="wilderness_hut"](around:'+r+','+lat+','+lng+');\
 node["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
 way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
 );out center tags 300;';
@@ -828,16 +771,14 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
     }
   }
 
-  // ── ACCESS RULE ENGINE ───────────────────────────────────────────────────────
   function accessRule(tags,typeHint){
     var a=tags.access||'', mv=tags.motor_vehicle||'', veh=tags.vehicle||'';
     var hw=tags.highway||'', grade=tags.tracktype||'', surf=tags.surface||'';
     var blocked=['no','private','permit','customers','delivery','agricultural','forestry','emergency','restricted'];
-    if(blocked.indexOf(a)!==-1)  return null; // drop
+    if(blocked.indexOf(a)!==-1)  return null;
     if(blocked.indexOf(mv)!==-1) return null;
     if(blocked.indexOf(veh)!==-1)return null;
 
-    // All parking variants → green
     var PARKING_VALS2=['lane','multi-storey','carport','rooftop','street_side','on_kerb','half_on_kerb','shoulder','surface','yes','underground'];
     if(tags.amenity==='parking'||tags.amenity==='parking_space'||tags.amenity==='parking_entrance'){
       var reason='Offizieller Parkplatz';
@@ -861,27 +802,23 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
       return {status:'orange',label:'🟠 Unsicher',reason:'Wald – Zufahrt unklar, vor Ort prüfen'};
     }
     if(hw==='track'){
-      if(a==='yes'||a==='permissive'||mv==='yes'||mv==='permissive')
-        return {status:'green',label:'🟢 Erreichbar',reason:'Forststrasse, Zugang explizit erlaubt'};
-      if(grade==='grade1') return {status:'green', label:'🟢 Erreichbar',reason:'Forststrasse Güte 1 – gut befestigt'};
-      if(grade==='grade2') return {status:'green', label:'🟢 Erreichbar',reason:'Forststrasse Güte 2 – gut befahrbar'};
-      if(grade==='grade3') return {status:'orange',label:'🟠 Unsicher',  reason:'Forststrasse Güte 3 – Allrad empfohlen'};
-      if(grade==='grade4') return {status:'orange',label:'🟠 Unsicher',  reason:'Forststrasse Güte 4 – schwierig'};
-      if(grade==='grade5') return {status:'orange',label:'🟠 Unsicher',  reason:'Forststrasse Güte 5 – kaum befahrbar'};
+      var mvOk=['yes','permissive','destination'];
+      var mvAllowed=mvOk.indexOf(mv)!==-1||mvOk.indexOf(veh)!==-1||mvOk.indexOf(a)!==-1;
+      if(!mvAllowed) return {status:'orange',label:'🟠 Unsicher',reason:'Fahrzeugzugang nicht bestätigt'};
+      if(mv==='destination'||a==='destination')
+        return {status:'orange',label:'🟠 Unsicher',reason:'Nur Zielverkehr erlaubt'};
+      if(grade==='grade1') return {status:'green',label:'🟢 Erreichbar',reason:'Forststrasse Güte 1 – gut befestigt'};
+      if(grade==='grade2') return {status:'green',label:'🟢 Erreichbar',reason:'Forststrasse Güte 2 – gut befahrbar'};
       if(surf==='asphalt'||surf==='paved'||surf==='concrete'||surf==='gravel'||surf==='compacted')
         return {status:'green',label:'🟢 Erreichbar',reason:'Befestigter Weg ('+surf+')'};
-      return {status:'orange',label:'🟠 Unsicher',reason:'Forststrasse – Güte unbekannt'};
+      return {status:'green',label:'🟢 Erreichbar',reason:'Fahrzeugzugang bestätigt'};
     }
-
-    // Gravel surface parking
     if(tags.amenity==='parking'&&tags.surface&&/gravel|unpaved/.test(tags.surface)){
       return {status:'green',label:'🟢 Erreichbar',reason:'Kiesuntergrund-Parkplatz'};
     }
-    // Rest area – always accessible by car
     if(hw==='rest_area'){
       return {status:'green',label:'🟢 Erreichbar',reason:'Offizieller Rastplatz'};
     }
-    // Camp / picnic / firepit / hut
     if(tags.tourism==='camp_site'){
       if(blocked.indexOf(a)===-1) return {status:'green',label:'🟢 Erreichbar',reason:'Campingplatz'};
       return {status:'orange',label:'🟠 Unsicher',reason:'Campingplatz – Zugang unklar'};
@@ -898,9 +835,8 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
     return {status:'orange',label:'🟠 Unsicher',reason:'Zugang nicht eindeutig'};
   }
 
-  var typePrio={parking:1,wild:2,camping:3};
+  var typePrio={parking:1,camping:2,wild:3};
 
-  // ── PROCESS ──────────────────────────────────────────────────────────────────
   function processResults(elements,clat,clng){
     var seen=new Set();
     elements.forEach(function(el){
@@ -915,7 +851,6 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
 
       var type,label,sublabel,iconKey,typeHint='';
 
-      // Parking subtype label
       var PARKING_VALS=['lane','multi-storey','carport','rooftop','street_side','on_kerb','half_on_kerb','shoulder','surface','yes'];
       var parkingSubtype=(function(){
         var p=tags.parking||'';
@@ -986,7 +921,7 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
       }else{return;}
 
       var access=accessRule(tags,typeHint);
-      if(!access)return; // drop blocked entries
+      if(!access)return;
 
       allResults.push({type,label,sublabel,iconKey,lat:elLat,lng:elLng,dist,access,prio:typePrio[type]||9});
     });
@@ -996,10 +931,8 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
     renderResults();
   }
 
-  // ── RENDER ───────────────────────────────────────────────────────────────────
   var typeEmoji={parking:'🅿️',wild:'🌳',track:'🌳',rest_area:'🌳',gravel:'🌳',forest:'🌳',clearing:'🌳',camp:'⛺',camping:'⛺',picnic:'🌄',firepit:'🔥',hut:'🛖'};
   var colorHex={green:'#16a34a',orange:'#ea580c'};
-  var chipCls={green:'map-chip map-chip-green',orange:'map-chip map-chip-orange'};
 
   function clearMarkers(){
     markers.forEach(function(m){map.removeLayer(m);});
@@ -1036,9 +969,6 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
         var mapUrl=isIOS
           ? 'https://maps.apple.com/?q='+rr.lat+','+rr.lng+'&ll='+rr.lat+','+rr.lng
           : 'https://www.google.com/maps/dir/?api=1&destination='+rr.lat+','+rr.lng;
-        var mapIcon=isIOS
-          ? '🗺 Apple Maps'
-          : '🗺 Google Maps';
         markerObj.bindPopup(
           '<div style="font-family:Inter,sans-serif;min-width:185px;padding:2px 0;position:relative;">'+
           '<div style="font-weight:700;font-size:.88rem;margin-bottom:3px;color:var(--text,#111827)">'+rr.label+'</div>'+
@@ -1046,15 +976,15 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
           '<div style="font-size:.72rem;font-weight:600;color:'+col+';margin-bottom:2px">'+rr.access.label+'</div>'+
           '<div style="font-size:.65rem;color:#9ca3af;margin-bottom:6px">'+rr.access.reason+'</div>'+
           '<div style="font-size:.65rem;color:#2563eb;font-weight:500;margin-bottom:20px">'+rr.dist.toFixed(2)+' km entfernt</div>'+
-          '<a href="'+mapUrl+'" target="_blank" rel="noopener" title="In Karten-App öffnen" '+
+          '<a href="'+mapUrl+'" target="_blank" rel="noopener" '+
             'style="position:absolute;bottom:8px;right:8px;'+
             'width:28px;height:28px;border-radius:7px;'+
-            'border:1.5px solid #d1d5db;background:#f9fafb;'+
+            'border:1.5px solid var(--border,#d1d5db);background:var(--surface2,#f9fafb);'+
             'display:flex;align-items:center;justify-content:center;'+
             'text-decoration:none;transition:background 0.15s;" '+
-            'onmouseover="this.style.background=\'#e5e7eb\'" '+
-            'onmouseout="this.style.background=\'#f9fafb\'">'+
-            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+
+            'onmouseover="this.style.background=\'var(--border,#e5e7eb)\'" '+
+            'onmouseout="this.style.background=\'var(--surface2,#f9fafb)\'">'+
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text2,#374151)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+
               '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'+
               '<polyline points="15 3 21 3 21 9"/>'+
               '<line x1="10" y1="14" x2="21" y2="3"/>'+
@@ -1066,7 +996,6 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
       m.on('click',(function(idx){return function(){highlightCard(idx);};})(i));
       markers.push(m);
     });
-
 
     var list=document.getElementById('resultsList');
     if(!filtered.length){
@@ -1080,12 +1009,12 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
         '<span class="result-emoji">'+(typeEmoji[r.iconKey]||'📍')+'</span>'+
         '<div class="result-info">'+
           '<div class="result-name">'+r.label+'</div>'+
-          '<div class="result-meta">'+
-            '<span class="result-sub">'+r.sublabel+'</span>'+
-            '<span class="access-tag '+accCls+'" style="color:'+col+'">'+r.access.label+'</span>'+
-          '</div>'+
+          '<div class="result-sub">'+r.sublabel+'</div>'+
         '</div>'+
-        '<span class="result-dist tag-'+r.type+'">'+r.dist.toFixed(1)+'km</span>'+
+        '<div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">'+
+          '<span class="access-tag '+accCls+'" style="color:'+col+'">'+r.access.label+'</span>'+
+          '<span class="result-dist tag-'+r.type+'">'+r.dist.toFixed(1)+'km</span>'+
+        '</div>'+
         '</div>';
     }).join('');
 
@@ -1097,11 +1026,11 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
 
   function focusResult(i,filtered){
     var r=filtered[i];if(!r)return;
-    closeSheet(); // close sheet so POI is visible on map
+    closeSheet();
     setTimeout(function(){
       map.flyTo([r.lat,r.lng],16,{duration:0.7});
       if(markers[i])markers[i].openPopup();
-    },320); // wait for sheet to animate out
+    },320);
     highlightCard(i);
   }
   function highlightCard(i){
@@ -1122,7 +1051,6 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
       btn.classList.add('loading');
       btn.innerHTML='<span class="spinner" style="border-top-color:#fff"></span> Lädt…';
       overlay.style.display='flex';
-      // reset steps
       setStep(0);
     }else{
       isSearching=false;
@@ -1133,7 +1061,6 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
   }
 
   function setStep(n){
-    // n=0 reset, 1=parking active, 2=gravel active, 3=forest active
     var steps=['step1','step2','step3'];
     steps.forEach(function(id,i){
       var el=document.getElementById(id);
@@ -1142,11 +1069,9 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
       el.className='map-step';
       dot.className='step-dot';
       if(i+1<n){
-        // done
         el.classList.add('done-step');
         dot.classList.add('done');
       }else if(i+1===n){
-        // active
         el.classList.add('active-step');
         dot.classList.add('active');
       }else{
@@ -1155,44 +1080,29 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
     });
   }
 
-  // ── LOGO RESET ────────────────────────────────────────────────────────────
   document.getElementById('logoBtn').addEventListener('click', function(){
-    // clear map
     clearMarkers();
     if(centerMarker){map.removeLayer(centerMarker); centerMarker=null;}
     if(radiusCircle){map.removeLayer(radiusCircle); radiusCircle=null;}
     allResults=[];
-
-    // reset input
     document.getElementById('searchInput').value='';
-
-    // reset radius to 5km
     radiusKm=2;
     slider.value=2;
     radiusValEl.textContent='2 km';
     updateSliderTrack();
-
-    // reset chips: only parking active
     activeFilters=new Set(['parking']);
     document.querySelectorAll('.chip').forEach(function(chip){
       chip.classList.toggle('active', chip.dataset.type==='parking');
     });
-
-    // reset results list
     document.getElementById('resultsList').innerHTML=
       '<div class="empty-state"><div class="empty-icon">🌙</div>'+
       '<div>Klicke auf die Karte oder gib<br>einen Ort in die Suche ein.</div></div>';
     document.getElementById('countBadge').textContent='0';
     setStatus('ok','Zurückgesetzt.');
-
-    // close sheet if open
     closeSheet();
-
-    // fly back to default view
     map.flyTo([46.95,7.45],12,{duration:1.0});
   });
 
-  // ── BOTTOM SHEET ──────────────────────────────────────────────────────────
   var sheet = document.getElementById('bottomSheet');
   var backdrop = document.getElementById('sheetBackdrop');
   var triggerBtn = document.getElementById('sheetTriggerBtn');
@@ -1211,9 +1121,8 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
   document.getElementById('sheetCloseBtn').addEventListener('click', closeSheet);
   backdrop.addEventListener('click', closeSheet);
 
-  // drag handle to resize / swipe down to close
   var sheetStartY=0, sheetDragging=false;
-  var handleRow=document.getElementById('sheetHandleBar')||sheet.querySelector('[id="sheetHandleBar"]')||sheet.children[0];
+  var handleRow=document.getElementById('sheetHandleBar')||sheet.children[0];
   function sheetDragStart(clientY){sheetStartY=clientY;sheetDragging=true;}
   function sheetDragMove(clientY){
     if(!sheetDragging)return;
@@ -1228,12 +1137,10 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
   handleRow.addEventListener('touchstart',function(e){sheetDragStart(e.touches[0].clientY);},{passive:true});
   sheet.addEventListener('touchmove',function(e){sheetDragMove(e.touches[0].clientY);},{passive:true});
   sheet.addEventListener('touchend',function(e){sheetDragEnd(e.changedTouches[0].clientY);},{passive:true});
-  // Mouse drag for desktop
   handleRow.addEventListener('mousedown',function(e){sheetDragStart(e.clientY);});
   document.addEventListener('mousemove',function(e){sheetDragMove(e.clientY);});
   document.addEventListener('mouseup',function(e){sheetDragEnd(e.clientY);});
 
-  // ── FULLSCREEN ────────────────────────────────────────────────────────────
   var fsBtn = document.getElementById('fullscreenBtn');
   var fsExpand = document.getElementById('fsExpand');
   var fsCollapse = '<path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>';
@@ -1245,6 +1152,25 @@ way["leisure"="firepit"](around:'+r+','+lat+','+lng+');\
       ? fsCollapse
       : '<path d="' + fsExpandPath + '"/>';
     setTimeout(function(){ map.invalidateSize(); }, 50);
+  });
+
+  // ── ESC KEY HANDLER ──────────────────────────────────────────────────────
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    // 1. Popup offen → schliessen
+    if(map._popup && map._popup.isOpen()){
+      map.closePopup(); return;
+    }
+    // 2. Sheet offen → schliessen
+    if(sheet.classList.contains('open')){
+      closeSheet(); return;
+    }
+    // 3. Suche läuft → abbrechen
+    if(isSearching){
+      isSearching=false;
+      setLoadingBtn(false);
+      setStatus('err','Suche abgebrochen.');
+    }
   });
 
   function haversine(lat1,lon1,lat2,lon2){
