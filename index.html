@@ -642,8 +642,8 @@ node["tourism"="camp_site"]["access"="yes"](around:'+r+','+lat+','+lng+');\
 way["tourism"="camp_site"]["access"="yes"](around:'+r+','+lat+','+lng+');\
 node["tourism"="camp_site"]["access"="destination"](around:'+r+','+lat+','+lng+');\
 way["tourism"="camp_site"]["access"="destination"](around:'+r+','+lat+','+lng+');\
-node["amenity"="shelter"](around:'+r+','+lat+','+lng+');\
-way["amenity"="shelter"](around:'+r+','+lat+','+lng+');\
+node["amenity"="shelter"]["shelter_type"!="public_transport"]["shelter_type"!="bus_stop"]["shelter_type"!="bicycle_parking"](around:'+r+','+lat+','+lng+');\
+way["amenity"="shelter"]["shelter_type"!="public_transport"]["shelter_type"!="bus_stop"]["shelter_type"!="bicycle_parking"](around:'+r+','+lat+','+lng+');\
 node["tourism"="picnic_site"](around:'+r+','+lat+','+lng+');\
 way["tourism"="picnic_site"](around:'+r+','+lat+','+lng+');\
 node["leisure"="picnic_table"](around:'+r+','+lat+','+lng+');\
@@ -772,6 +772,8 @@ way["highway"="track"]["vehicle"~"yes|permissive|destination"](around:'+r+','+la
         type='camping';iconKey='hut';
         label=tags.name||'Waldhütte';sublabel='Waldhütte / Unterstand';
       }else if(tags.amenity==='shelter'){
+        var st=tags.shelter_type||'';
+        if(st==='public_transport'||st==='bus_stop'||st==='bicycle_parking')return;
         type='camping';iconKey='hut';
         label=tags.name||'Unterstand / Schutzhütte';sublabel='Unterstand'+(tags.shelter_type?' · '+tags.shelter_type:'');
       }else if(tags.leisure==='picnic_table'){
